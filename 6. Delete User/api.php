@@ -29,7 +29,3 @@ Route::put('/update-user-details/{id}', [UserApiController::class, 'updateUserDe
 Route::delete('/delete-single-user/{id}', [UserApiController::class, 'deleteUser']);
 
 Route::delete('/delete-single-user-json', [UserApiController::class, 'deleteUserJson']);
-
-Route::delete('/delete-multiple-user/{ids}', [UserApiController::class, 'deleteMultipleUser']);
-
-Route::delete('/delete-multiple-user-json', [UserApiController::class, 'deleteMultipleUserJson']);

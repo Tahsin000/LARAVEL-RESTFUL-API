@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "99d9daf7-f2e6-4fbe-b224-c9b64ad26357",
+		"name": "Laravel8api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28205489",
+		"_collection_link": "https://lively-resonance-468022.postman.co/workspace/Linkedme-API-Documentation~fb8ff72b-fbb4-4072-9f5a-22e64e48d44e/collection/28205489-99d9daf7-f2e6-4fbe-b224-c9b64ad26357?action=share&source=collection_link&creator=28205489"
+	},
+	"item": [
+		{
+			"name": "Add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "abrar",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ami@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-user?name=abrar&email=abrar@gmail.com&password=123",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "abrar"
+						},
+						{
+							"key": "email",
+							"value": "abrar@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add-multiple-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"users\": [\r\n        {\r\n            \"name\": \"Abrar\",\r\n            \"email\": \"abrar@gmail.com\",\r\n            \"password\": \"123\"\r\n        },\r\n        {\r\n            \"name\": \"John\",\r\n            \"email\": \"john@example.com\",\r\n            \"password\": \"password123\"\r\n        },\r\n        {\r\n            \"name\": \"Alice\",\r\n            \"email\": \"alice@example.com\",\r\n            \"password\": \"securepass\"\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-multiple-user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-multiple-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update-user-details",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/update-user-details/11?name=sakib&password=12221",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"update-user-details",
+						"11"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "sakib"
+						},
+						{
+							"key": "password",
+							"value": "12221"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

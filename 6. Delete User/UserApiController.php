@@ -8,29 +8,15 @@ use Illuminate\Http\Request;
 
 class UserApiController extends Controller
 {
-    public function showUser(Request $request , $id = null)
+    public function showUser($id = null)
     {
-        $header = $request->header('Authorization');
-        if ($header == ''){
-            $message = 'Authorization is required';
-            return response()->json(['message'=>$message], 422);
+        if ($id == '') {
+            $users = User::get();
+            return response()->json(['users' => $users], 200);
         } else {
-            if ($header == 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOTg3NjIiLCJuYW1lIjoiSEhISk5KTiIsImlhdCI6OTI4MzIzOTJ9.SO91yjmHUreCbGCMhO-Kdt91oFb3vmvuu6VSRLQfV_c'){
-                if ($id == '') {
-                    $users = User::get();
-                    return response()->json(['users' => $users], 200);
-                } else {
-                    $users = User::find($id);
-                    return response()->json(['users' => $users], 200);
-                }
-            } else {
-                $message = 'Authorization done not match';
-                return response()->json(['message'=>$message], 422);
-
-            }
+            $users = User::find($id);
+            return response()->json(['users' => $users], 200);
         }
-
-       
     }
 
     public function addUser(Request $request)
@@ -139,39 +125,6 @@ class UserApiController extends Controller
             User::where('id', $data['id'])->delete();
             $message = 'User Successfully Deleted';
             return response()->json(['message' => $message], 200);
-        }
-    }
-    public function deleteMultipleUser($ids)
-    {
-        $ids = explode(',', $ids);
-        User::whereIn('id', $ids)->delete();
-        $message = 'User Successfully Delete';
-        return response()->json(['message' => $message], 200);
-    }
-    public function deleteMultipleUserJson(Request $request)
-    {
-        $data = $request->input('ids');
-        $data = $request->all();
-
-        // Assuming 'ids' is an array of user IDs to delete
-        $ids = $data['ids'];
-
-        // Check if the 'ids' array is not empty before attempting to delete
-        if (!empty($ids)) {
-            // Use a try-catch block to handle any potential errors
-            try {
-                User::whereIn('id', $ids)->delete();
-                $message = 'Users Successfully Deleted';
-                return response()->json(['message' => $message], 200);
-            } catch (\Exception $e) {
-                // Handle any exceptions, e.g., database errors
-                $message = 'Error: ' . $e->getMessage();
-                return response()->json(['message' => $message], 500);
-            }
-        } else {
-            // Return a message if 'ids' array is empty
-            $message = 'No user IDs provided for deletion.';
-            return response()->json(['message' => $message], 400);
         }
     }
 }
